@@ -17,3 +17,22 @@ let questions = [
         correctAnswer: "7"
     }
 ]
+
+// Event Listeners
+
+nextButton.addEventListener("click", loadNextQuestion);
+
+// Initialise the quiz
+initialiseQuiz();
+
+// Display the first question
+function initialiseQuiz() {
+    displayQuestion(questions[currentQuestionIndex]);
+}
+
+function displayQuestion(questionObj) {
+    quizContainer.innerHTML = "";
+
+    const questionElement = document.createElement("h2");
+    questionElement.innerText = questionObj.question;
+}
