@@ -6,3 +6,17 @@
 button {
     margin: 5px;
 }
+
+button#restart-quiz-btn {
+    display: none;
+}
+
+#correct-answers {
+    font-weight: bold;
+    color: green;
+}
+
+#incorrect-answers {
+    font-weight: bold;
+    color: red;
+}
