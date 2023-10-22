@@ -52,6 +52,16 @@ let questions = [
         question: "How many World Cups have Brazil won?",
         options: ["3", "4", "5", "6", "7"],
         correctAnswer: "5"
+    },
+    {
+        question: "In which city is the Eiffel Tower?",
+        options: ["London", "Paris", "Rome", "Berlin", "Beijing"],
+        correctAnswer: "Paris"
+    },
+    {
+        question: "In which country will you find the Ancient Pyramids?",
+        options: ["Germany", "China", "Egypt", "Morocco", "Australia"],
+        correctAnswer: "Egypt"
     }
 ];
 
@@ -96,7 +106,7 @@ function displayQuestion(questionObj) {
         const button = createOptionButton(option);
         quizContainer.appendChild(button);
     });
-    
+
     nextButton.style.display = "inline-block";
 }
 
@@ -115,18 +125,20 @@ function createOptionButton(option) {
 function handleOptionClick(optionSelected) {
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
     if (optionSelected === correctAnswer) {
-        // alert("CORRECT!");
-        quizContainer.innerHTML = `<h1>Correct!</h1>`;
+        const h1 = document.createElement('h1');
+        h1.classList.add('mt-5');
+        h1.innerText = "Correct!!!";
+        quizContainer.appendChild(h1);
         numberOfCorrectAnswers++;
         correctAnswers.innerText = numberOfCorrectAnswers;
     } else {
-        quizContainer.innerHTML = `<h1>You plonker Rodney! The correct answer was ${correctAnswer}!</h1>`;
+        const h1 = document.createElement('h1');
+        h1.classList.add('mt-5');
+        h1.innerText = `You plonker Rodney! The correct answer was ${correctAnswer}!`;
+        quizContainer.appendChild(h1);
         numberOfIncorrectAnswers++;
         incorrectAnswers.innerText = numberOfIncorrectAnswers;
     }
-    // setTimeout(() => {
-    //     loadNextQuestion();
-    // }, 2000);
 }
 
 function loadNextQuestion() {
