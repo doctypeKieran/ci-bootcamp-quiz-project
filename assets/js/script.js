@@ -42,8 +42,18 @@ let questions = [
         question: "What house is Harry Potter in?",
         options: ["Hufflepuff", "Slytherin", "Gryffindor", "Ravenclaw"],
         correctAnswer: "Gryffindor"
+    },
+    {
+        question: "How many Harry Potter books are there?",
+        options: ["6", "10", "9", "7"],
+        correctAnswer: "7"
+    },
+    {
+        question: "How many World Cups have Brazil won?",
+        options: ["3", "4", "5", "6", "7"],
+        correctAnswer: "5"
     }
-]
+];
 
 // Event Listeners
 
@@ -86,6 +96,8 @@ function displayQuestion(questionObj) {
         const button = createOptionButton(option);
         quizContainer.appendChild(button);
     });
+    
+    nextButton.style.display = "inline-block";
 }
 
 function createOptionButton(option) {
@@ -103,15 +115,18 @@ function createOptionButton(option) {
 function handleOptionClick(optionSelected) {
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
     if (optionSelected === correctAnswer) {
-        alert("CORRECT!");
+        // alert("CORRECT!");
+        quizContainer.innerHTML = `<h1>Correct!</h1>`;
         numberOfCorrectAnswers++;
         correctAnswers.innerText = numberOfCorrectAnswers;
     } else {
-        alert("You plonker Rodney!");
+        quizContainer.innerHTML = `<h1>You plonker Rodney! The correct answer was ${correctAnswer}!</h1>`;
         numberOfIncorrectAnswers++;
         incorrectAnswers.innerText = numberOfIncorrectAnswers;
     }
-    loadNextQuestion();
+    // setTimeout(() => {
+    //     loadNextQuestion();
+    // }, 2000);
 }
 
 function loadNextQuestion() {
@@ -127,5 +142,5 @@ function loadNextQuestion() {
 function endQuiz() {
     quizContainer.innerHTML = `<h1>Game Over!!!</h1>`;
     restartQuizBtn.style.display = "inline-block";
-    nextButton.classList.add("d-none");
+    nextButton.style.display = "none";
 }
